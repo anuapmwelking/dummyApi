@@ -1,8 +1,7 @@
 function getInputValue() {
   var inputVal = document.getElementById("myInput").value;
-  if (inputVal >= 0 || inputVal <= 10) {
+  if (inputVal >= 0 && inputVal <= 10) {
     let input = inputVal;
-    // console.log(inputVal);
     const xhr = new XMLHttpRequest();
 
     xhr.open("GET", "https://jsonplaceholder.typicode.com/posts");
@@ -10,13 +9,11 @@ function getInputValue() {
     xhr.onload = function () {
       if (this.status === 200) {
         let obj = JSON.parse(this.responseText);
-        // console.log(obj);
 
         let list = document.getElementById("list");
 
         str = "";
         for (key in obj) {
-          // console.log(input);
           if (obj[key].userId == input) {
             str += `<div style="    display: flex;
             flex-direction: column;
@@ -31,27 +28,31 @@ function getInputValue() {
             str += `<p>DESCRIPTION = ${obj[key].body} </p>`;
             str += `<br>`;
             str += `</div>`;
+          } else {
+            // console.log("error occured");
           }
-          //  else {
-          //   console.log("error occured");
-          // }
         }
         list.innerHTML = str;
-        // console.log(str);
       } else {
         console.log("Some error occured");
       }
     };
 
-    // inputVal = "";
     xhr.send();
+  } else {
+    let errorDiv = document.getElementById("error");
+    let str2 = "";
+    str2 += `<p><b>Please enter the value in range from 1 to 10</b><p/>`;
+    errorDiv.innerHTML = str2;
   }
-  // console.log("ho");
+  // else {
+  //   let errorDiv = document.getElementById("error");
+  //   let str2 = "";
+  //   str2 += `<p><b>Please enter the value in range from 1 to 10</b><p/>`;
+  //   errorDiv.innerHTML = str2;
 
-  let errorDiv = document.getElementById("error");
-  let str2 = "";
-  str2 += `<p><b>Please enter the value in range from 1 to 10</b><p/>`;
-  errorDiv.innerHTML = str2;
+  // }
+
   document.getElementById("myInput").value = "";
+  return false;
 }
-// inputVal = "";
