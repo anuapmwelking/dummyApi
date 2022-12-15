@@ -38,7 +38,7 @@ function getInputValue() {
         console.log("Some error occured");
       }
     };
-
+    console.log("error");
     xhr.send();
   } else {
     let errorDiv = document.getElementById("error");
