@@ -11,7 +11,7 @@ function getInputValue() {
         let obj = JSON.parse(this.responseText);
 
         let list = document.getElementById("list");
-        list.innerHTML= '';
+      
         str = "";
         for (key in obj) {
           if (obj[key].userId == input) {
@@ -30,6 +30,7 @@ function getInputValue() {
             str += `</div>`;
           } else {
             // console.log("error occured");
+              list.innerHTML= '';
           }
         }
         list.innerHTML = str;
