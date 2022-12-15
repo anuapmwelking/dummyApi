@@ -41,6 +41,7 @@ function getInputValue() {
     xhr.send();
   } else {
     let errorDiv = document.getElementById("error");
+    list.innerHTML='';
     let str2 = "";
     str2 += `<p><b>Please enter the value in range from 1 to 10</b><p/>`;
     errorDiv.innerHTML = str2;
