@@ -11,7 +11,7 @@ function getInputValue() {
         let obj = JSON.parse(this.responseText);
 
         let list = document.getElementById("list");
-
+        list.innerHTML= '';
         str = "";
         for (key in obj) {
           if (obj[key].userId == input) {
@@ -41,6 +41,7 @@ function getInputValue() {
     xhr.send();
   } else {
     let errorDiv = document.getElementById("error");
+    let list = document.getElementById("list");
     list.innerHTML='';
     let str2 = "";
     str2 += `<p><b>Please enter the value in range from 1 to 10</b><p/>`;
